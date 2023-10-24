@@ -94,9 +94,12 @@ class QuoteWidget extends StatelessWidget {
                           .animate(target: quote.favorite ? 1 : 0)
                           .fadeOut(duration: 200.ms) // fade out & then...
                           // swap in original widget & fade back in via a new Animate:
+                          .then()
                           .swap(
-                            builder: (_, child) => child!.animate().fadeIn(),
-                          )
+                        builder: (_, child) {
+                          return child!.animate().fadeIn();
+                        },
+                      )
                     ],
                   ),
                   IconButton(
