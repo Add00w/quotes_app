@@ -15,6 +15,7 @@ class QuotesView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('Quotes')),
       floatingActionButton: FloatingActionButton(
+        key: const Key('add_quote'),
         child: const Icon(Icons.add),
         onPressed: () {
           context.push(
