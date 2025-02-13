@@ -34,7 +34,7 @@ void main() {
       await tester.pump();
 
       await tester.enterText(textFields.last, 'Test Auther');
-      await tester.pump();
+      await tester.pump(const Duration(seconds: 2));
 
       // Finds the 'Save Quote' button to tap on.
       final saveButton = find.text('Save Quote');
@@ -44,13 +44,13 @@ void main() {
       final backButton = find.byType(BackButton);
       expect(backButton, findsOneWidget);
       await tester.tap(backButton);
-      await tester.pump(const Duration(seconds: 1));
+      await tester.pumpAndSettle();
 
       final favIcon = find.byIcon(Icons.favorite_border);
       expect(favIcon, findsWidgets);
       for (int i = 0; i < 4; i++) {
         await tester.tap(favIcon.first, warnIfMissed: false);
-        await tester.pump(const Duration(milliseconds: 400));
+        await tester.pump(const Duration(seconds: 1));
       }
     },
   );
